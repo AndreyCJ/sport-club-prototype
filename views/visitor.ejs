@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%
+    let visitorName = '';
+    let visitorAge = '';
+    let visitorSportType = '';
+    data.visitors.forEach(visitor => { 
+        if (visitor['id_посетителя'] == data.visitorId) {
+            visitorName = visitor['ФИО'];
+            visitorAge = visitor['возраст'];
+            visitorSex = visitor['пол'];
+            visitorSportType = visitor['вид спорта'];
+        }
+    });
+    %>
+    <h1>Посетитель <%= visitorName %> </h1>
+    <span>Возраст: <%= visitorAge %></span><br />
+    <span>Пол: <%= visitorSex %></span><br />
+    <span>Вид спорта: <%= visitorSportType %></span><br />
+</body>
+</html>

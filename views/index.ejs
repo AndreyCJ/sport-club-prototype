@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Посетители клуба</h1>
+    <ul>
+
+        <% data.results.forEach(visitor => { %>
+            <li><a href=<%='/visitor/' + visitor['id_посетителя'] %> ><%= visitor['ФИО'] %></a></li>
+        <% }); %>
+        
+    </ul>
+
+    <form action="/addVisitor" method="POST">
+        <label for="name">Имя:</label><br />
+        <input name="name" id="name" type="text"><br />
+        <label for="age">Возраст:</label><br />
+        <input name="age" id="age" type="text"><br />
+        <label for="sex">Пол:</label><br />
+        <input name="sex" id="sex" type="text"><br />
+        <label for="name">Вид спорта:</label><br />
+        <input name="sportType" id="sprtType" type="text"><br />
+
+        <button type="submit">Добавить</button>
+
+    </form>
+</body>
+</html>
