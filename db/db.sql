@@ -2,8 +2,8 @@
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 19, 2020 at 12:04 PM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 15, 2020 at 11:02 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -45,7 +45,10 @@ CREATE TABLE `посетители` (
 
 INSERT INTO `посетители` (`id_посетителя`, `ФИО`, `возраст`, `пол`, `вид спорта`, `дата_начала_занятий`) VALUES
 (1, 'Фёдоров Власий Васильевич', 23, 'м', 'Тяжелая атлетика', '2020-03-24'),
-(2, 'Павлов Моисей Антонинович', 37, 'м', 'Легкая атлетика', '2020-03-30');
+(2, 'Павлов Моисей Антонинович', 37, 'м', 'Легкая атлетика', '2020-03-30'),
+(6, 'фывыфв выффы фвыфыв', 12, 'м', 'фвыфыфв', '0000-00-00'),
+(8, 'Иванов Василий Петрович', 19, 'м', 'Плаванье', '0000-00-00'),
+(9, 'Тест', 228, 'ж', 'Киберспорт', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -109,7 +112,8 @@ ALTER TABLE `работники`
 -- Indexes for table `тренажеры`
 --
 ALTER TABLE `тренажеры`
-  ADD PRIMARY KEY (`id_тренажера`);
+  ADD PRIMARY KEY (`id_тренажера`),
+  ADD KEY `вид_спорта` (`вид_спорта`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -119,7 +123,7 @@ ALTER TABLE `тренажеры`
 -- AUTO_INCREMENT for table `посетители`
 --
 ALTER TABLE `посетители`
-  MODIFY `id_посетителя` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_посетителя` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `работники`
@@ -132,6 +136,16 @@ ALTER TABLE `работники`
 --
 ALTER TABLE `тренажеры`
   MODIFY `id_тренажера` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `тренажеры`
+--
+ALTER TABLE `тренажеры`
+  ADD CONSTRAINT `тренажеры_ibfk_1` FOREIGN KEY (`вид_спорта`) REFERENCES `посетители` (`вид спорта`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
